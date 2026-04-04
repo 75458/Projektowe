@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="red.css">
+    <link rel="stylesheet" href="red.css" id="css">
     <title>CV</title>
 </head>
 <!-- Wszystkie podane informacje  są nieprwadziwe -->
 <body>
     <header>
+        <button id="btn-motyw">Zmień motyw</button>
+        <button id="btn-all">Pokaż wszystko</button>
+        <button id="btn-kontakt">Kontakt</button>
+        <button id="btn-dosw">Doświadczenie</button>
         <h1>KAMIL KUCHARSKI - Curriculum Vitae</h1>
         <img src="zdjecie.jpg" alt="Zdjęcie profilowe">
     </header>
     <main>
+        
         <div id="lewo">
         <section id="kontakt">
             <h2>Kontakt</h2>
@@ -20,12 +25,12 @@
             <p><b>Telefon:</b> <a href="tel:+48123343213">Numer telefonu:+48 123 343 213</a></p>
             <p><b>Miasto:</b> Wrocław</p>
         </section>
-        <section>
+        <section id="mnie">
             <h2>O mnie</h2>
             <a href="https://github.com/75458" target="_blank" rel="noopener noreferrer"><big>GitHub</big></a><br>
             <a href="https://pl.linkedin.com/" target="_blank" rel="noopener noreferrer"><big>Linkedin</big></a>
         </section>
-        <section>
+        <section id="umie">
             <h2>Umiejętności</h2>
             <ul>
                 <li>Podstawy JavaScript</li>
@@ -37,7 +42,7 @@
         </section>
         </div>
         <div id="prawo">
-        <section>
+        <section id="dos">
             <h2>Doświadczenie</h2>
                 <article>
                     <p>07.2021-07.2022 <b>Stażysta IT</b></p>
@@ -46,12 +51,12 @@
                     <p>10.2022-9.2023 <b>Sieciowiec</b></p>
                 </article>
         </section>
-        <section>
+        <section id="edu">
             <h2>Edukacja</h2>
             <p>Podstawówka</p>
             <p>Technikum</p>
         </section>
-        <section>
+        <section id="proj">
             <h2>Projekty</h2>
             <ol>
                 <li>Aplikacja do liczenia kroków</li>
@@ -62,7 +67,8 @@
     </main>
     <footer>
         <p>Wyrażam zgodę na przetwarzanie moich danych osobowych przez [nazwa firmy] w celu prowadzenia rekrutacji na aplikowane przeze mnie stanowisko</p>
-        <p><small>&copy; 2026 Kamil Kucharski</small></p>
+        <p><small>&copy; 2026 Kamil Kucharski 75458</small></p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
