@@ -1,3 +1,46 @@
+//zadanie 4
+const BTNmotyw = document.getElementById("btn-motyw");
+const BTNkontakt = document.getElementById("btn-kontakt");
+const BTNall = document.getElementById("btn-all");
+const BTNdosw = document.getElementById("btn-dosw");
+const motyw = document.getElementById("css");
+
+BTNmotyw.addEventListener('click',function(){
+if(motyw.getAttribute('href') === "red.css"){
+    motyw.setAttribute("href", "green.css");
+}else{
+    motyw.setAttribute("href", "red.css");
+}
+});
+
+const kontakt = document.getElementById("kontakt")
+function Widocznosc(){
+if(kontakt.style.visibility === "hidden"){
+    kontakt.style.visibility = "visible";
+}else{
+    kontakt.style.visibility = "hidden";
+}
+}
+BTNkontakt.addEventListener('click', Widocznosc)
+
+const doswiadczenie = document.getElementById("dos");
+function WidoDosw(){
+if(doswiadczenie.style.visibility === "hidden"){
+    doswiadczenie.style.visibility = "visible";
+}else{
+    doswiadczenie.style.visibility ="hidden"
+}}
+BTNdosw.addEventListener('click', WidoDosw)
+
+const sekcje = document.querySelectorAll("section");
+function showall(){
+    sekcje.forEach(function(element){
+        element.style.visibility = "visible"
+    })
+}
+BTNall.addEventListener('click',showall)
+
+//zadanie 5
 const formularz = document.querySelector('form[name="dane"]')
 //pola bledow
 const blad1 = document.getElementById("blad-name")
@@ -70,4 +113,23 @@ formularz.addEventListener('submit',function(e){
     }
 })
 
+//zadanie 6
 
+fetch('dane.json')
+.then(response => response.json())
+.then(dane => {
+const listaUmie = document.getElementById('lista-umie');
+dane.umiejetnosci.forEach(umiejetnosc => {
+            const li = document.createElement('li'); 
+            li.textContent = umiejetnosc;            
+            listaUmie.appendChild(li);               
+        });
+        const listaProj = document.getElementById('lista-proj'); 
+        
+        dane.projekty.forEach(projekt => {
+            const li = document.createElement('li');
+            li.textContent = projekt;
+            listaProj.appendChild(li);
+        });
+
+    })

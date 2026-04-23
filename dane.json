@@ -1,0 +1,13 @@
+{
+  "umiejetnosci": [
+    "Podstawy JavaScript",
+    "Obsługiwanie Git",
+    "Tworzenie kodu semantycznego HTML5",
+    "Praca w grupie",
+    "Praca pod presją"
+  ],
+  "projekty": [
+    "Aplikacja do liczenia kroków",
+    "Strona internetowa kawiarni"
+  ]
+}
