@@ -133,3 +133,52 @@ dane.umiejetnosci.forEach(umiejetnosc => {
         });
 
     })
+
+
+// zadanie 7
+
+const inputNotatka = document.getElementById('nowa-not');
+const btnDodajNotatke = document.getElementById('btn-dodaj-not');
+const listaNotatek = document.getElementById('lista-not');
+
+let notatki = JSON.parse(localStorage.getItem('mojeNotatkiCV')) || [];
+
+function Notatki() {
+    listaNotatek.innerHTML = ''; 
+    
+    notatki.forEach(function(notatka, index) {
+        const li = document.createElement('li');
+        li.textContent = notatka + " ";
+        
+        const btnUsun = document.createElement('button');
+        btnUsun.textContent = 'Usuń';
+        btnUsun.style.marginLeft = "10px";
+        
+        btnUsun.addEventListener('click', function() {
+            notatki.splice(index, 1); 
+            zapiszNotatki();          
+            Notatki();        
+        });
+
+        
+        li.appendChild(btnUsun);
+        listaNotatek.appendChild(li);
+    });
+}
+function zapiszNotatki() {
+    
+    localStorage.setItem('mojeNotatkiCV', JSON.stringify(notatki));
+}
+btnDodajNotatke.addEventListener('click', function() {
+    const tekst = inputNotatka.value.trim();
+    
+    if (tekst !== "") {
+        notatki.push(tekst); 
+        zapiszNotatki();     
+        Notatki();   
+        inputNotatka.value = '';
+    } else {
+        alert("Wpisz tekst przed dodaniem!");
+    }
+});
+Notatki();
