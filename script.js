@@ -40,7 +40,7 @@ function showall(){
 }
 BTNall.addEventListener('click',showall)
 
-//zadanie 5
+//zadanie 5 MODYFIKACJA DLA ZADANIA 7
 const formularz = document.querySelector('form[name="dane"]')
 //pola bledow
 const blad1 = document.getElementById("blad-name")
@@ -106,10 +106,45 @@ formularz.addEventListener('submit',function(e){
     }else{
         blad4.textContent = ""
     }
-
+// MODYFIKACJA DLA ZADANIA 7
     if(powodzenie === true){
-        alert("Wiadomość wysłana!!!")
-        formularz.reset();
+        // To jest miejsce na Twoje dane z Supabase (skopiowane w Kroku 1)
+        const PROJECT_URL = "https://mzsqgpdsdvugnsexyrid.supabase.co"; 
+        const API_KEY = "sb_publishable_MleEmYMnl3ksdJNYpesw1w_FAHe-dBx"; 
+
+        // Tworzymy obiekt z danymi do wysłania
+        const dataToSend = {
+            fname: Imie,
+            Sname: Nazwisko,
+            email: email,
+            message: message
+        };
+
+        // Wymaganie 1: Wysłanie danych metodą POST za pomocą fetch()
+        fetch(`${PROJECT_URL}/rest/v1/wiadomosci`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': API_KEY, // Supabase wymaga autoryzacji kluczem
+                'Authorization': `Bearer ${API_KEY}`,
+                'Prefer': 'return=minimal' // Informuje serwer, że nie potrzebujemy odpowiedzi z pełnymi danymi
+            },
+            body: JSON.stringify(dataToSend) // Zamieniamy obiekt na format JSON
+        })
+        .then(response => {
+            if (!response.ok) {
+                // Jeśli serwer odpowiedział błędem (np. 400, 500)
+                throw new Error('Błąd połączenia z serwerem');
+            }
+            // Wymaganie 3: Potwierdzenie poprawnego wysłania danych
+            alert("UDAŁO SIĘ! Wiadomość została zapisana w bazie Supabase.");
+            formularz.reset(); // Czyszczenie formularza po sukcesie
+        })
+        .catch(error => {
+            // Obsługa błędów, jeśli coś poszło nie tak
+            console.error('Błąd:', error);
+            alert("Wystąpił błąd podczas wysyłania wiadomości.");
+        });
     }
 })
 
